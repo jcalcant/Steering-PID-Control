@@ -52,12 +52,13 @@ void Twiddle::run(double total_err){
         state = 1;
       }
     }
-    //printf("best params so far: Kp->%lf Kd->%lf Ki->%lf \n",p[0],p[1],p[2]);
-    //std::string reset_msg = "42[\"reset\",{}]";
-    //ws.send(reset_msg.data(), reset_msg.length(), uWS::OpCode::TEXT);
   }
 }
 
 vector<double> Twiddle::get_params(){
   return p;
+}
+
+double Twiddle::get_best_error(){
+  return best_err;
 }

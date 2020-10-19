@@ -19,6 +19,7 @@ class Twiddle {
   
   	void run(double total_err);
   	vector<double> get_params();
+  	double get_best_error();
   
   private:
   	int state; // state1 -> not initialized (get initial best_err and add dp. state1 -> check if state1 makes best_err better; if not, subract 2dp. state3 -> check if step2 makes best_err better otherwise, make dp smaller 
