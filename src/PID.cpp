@@ -36,9 +36,3 @@ double PID::TotalError() {
    */
   return - Kp*p_error - Kd*d_error - Ki*i_error;  // TODO: Add your total error calc here!
 }
-
-void PID::twiddle(int param_idx,int state){
-  if (param_idx == 0){
-    
-  
-  }
