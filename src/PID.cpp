@@ -36,3 +36,14 @@ double PID::TotalError() {
    */
   return - Kp*p_error - Kd*d_error - Ki*i_error;  // TODO: Add your total error calc here!
 }
+
+void PID::resetErrors(){
+  i_error = 0.0;
+  prev_cte = 0.0;
+}
+
+void PID::setParams(vector<double> new_params){
+  Kp = new_params[0];
+  Kd = new_params[1];
+  Ki = new_params[2];
+}

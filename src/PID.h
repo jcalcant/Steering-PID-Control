@@ -1,5 +1,8 @@
 #ifndef PID_H
 #define PID_H
+#include <vector>
+
+using namespace std;
 
 class PID {
  public:
@@ -30,6 +33,8 @@ class PID {
    * @output The total PID error
    */
   double TotalError();
+  void resetErrors();
+  void setParams(vector<double> new_params);
 
  private:
   /**
