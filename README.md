@@ -96,3 +96,12 @@ still be compilable with cmake and make./
 ## How to write a README
 A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
 
+## Project Reflection
+In order to solve this project I started by completing the code for the PID controller. Then, I implemented the twiddle algorithm from the lessons. I first tuned the PID parameters manually, starting with Kd and Ki as 0, and slightly increasing and decreasing Kp. From this, I observed that Kp was the main force behind steering the wheel, so I just incremented it until the car responded to the curves with enough magnitude. Then, I fixed Kp and tuned Kd. I observed that it would make the steering to react faster to the error. Again I just set it so that curves would be responded to quickly enough. Finally I tuned Ki, which was the main contributor to reducing the car oscillation, since it accumulates the error over time.
+
+Also, I added a basic throttle control by increasing it if the current CTE was smaller than in the previous iteration; otherwise, I would decrease the speed proportionally to the CTE.
+
+Following this, I tried to fine tune the parameters with twiddle. My first implementation failed to improve them. However I was able to fix it by taking a closer look at the algorithm from class and added a step_size (number of iterations) so that the error could be accumulated and that twiddle could determine if changes in the parameters actually improved, made worse or didn't affect the performance. Also, I had to reset the accumulated error and the PID's integral error after 2 times the step_size, so that the new error would actually reflect the current parameter's effect. In case the car would leave the lane I observed that the CTE would be close to 1.5, so I set this as a condition to reset the simulator.
+With my new version of twiddle I was able to fine tune my PID parameters. Even though the new values varied slightly from the manually selected ones, the driving was smoother.
+
+This is a video of the tuned PID in the simulator: https://youtu.be/7rudQIEf7bs.
